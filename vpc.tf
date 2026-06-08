@@ -73,7 +73,7 @@ resource "aws_subnet" "private" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Name = "andbox-private-${count.index + 1}"
+    Name = "sandbox-private-${count.index + 1}"
   }
 }
 
