@@ -2,6 +2,7 @@ resource "aws_instance" "nat" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t3.nano"
   key_name      = "abbas"
+  iam_instance_profile = aws_iam_instance_profile.nat_instance_profile.name
 
   subnet_id = aws_subnet.public[0].id
 
