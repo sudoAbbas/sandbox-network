@@ -16,6 +16,7 @@ resource "aws_instance" "nat" {
 
   user_data = <<-EOF
 #!/bin/bash
+sudo dnf install -y bind-utils
 
 sysctl -w net.ipv4.ip_forward=1
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
