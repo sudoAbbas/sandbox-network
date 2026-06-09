@@ -23,8 +23,8 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 
 dnf install -y iptables-services
 
-PRIMARY_IF=$(ip route | grep default | awk '{print $5}')
-iptables -t nat -A POSTROUTING -o $PRIMARY_IF -j MASQUERADE
+sudo iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
 
 service iptables save
 systemctl enable iptables
